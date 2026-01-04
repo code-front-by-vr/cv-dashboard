@@ -2,7 +2,7 @@
 
 import { useRouter, usePathname } from 'next/navigation'
 
-import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs'
 import { cn } from '@/lib/utils'
 
 export default function AuthTabs({ children }: { children: React.ReactNode }) {
@@ -23,7 +23,7 @@ export default function AuthTabs({ children }: { children: React.ReactNode }) {
         <TabsTrigger value="login">Login</TabsTrigger>
         <TabsTrigger value="signup">Sign Up</TabsTrigger>
       </TabsList>
-      <div>{children}</div>
+      <TabsContent value={current}>{children}</TabsContent>
     </Tabs>
   )
 }
