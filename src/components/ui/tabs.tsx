@@ -29,7 +29,6 @@ function TabsTrigger({ className, ...props }: React.ComponentProps<typeof TabsPr
         'text-secondary inline-flex w-full cursor-pointer items-center justify-center px-4 py-4 leading-tight font-medium uppercase transition-colors duration-200 ease-out disabled:pointer-events-none',
         'selected:font-semibold border-b-2 border-transparent',
         'data-[state=active]:text-primary data-[state=active]:border-primary data-[state=active]:font-semibold',
-        'ripple',
         className,
       )}
       {...props}
@@ -47,4 +46,4 @@ function TabsContent({ className, ...props }: React.ComponentProps<typeof TabsPr
   )
 }
 
-export { Tabs, TabsContent,TabsList, TabsTrigger }
+export { Tabs, TabsContent, TabsList, TabsTrigger }
