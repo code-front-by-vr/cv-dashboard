@@ -1,10 +1,10 @@
+import tseslint from '@typescript-eslint/eslint-plugin'
+import tsParser from '@typescript-eslint/parser'
 import { defineConfig, globalIgnores } from 'eslint/config'
 import nextVitals from 'eslint-config-next/core-web-vitals'
 import nextTs from 'eslint-config-next/typescript'
 import prettier from 'eslint-config-prettier'
-import tsParser from '@typescript-eslint/parser'
-import tseslint from '@typescript-eslint/eslint-plugin'
-import importPlugin from 'eslint-plugin-import'
+import simpleImportSort from 'eslint-plugin-simple-import-sort'
 import unusedImports from 'eslint-plugin-unused-imports'
 
 const eslintConfig = defineConfig([
@@ -17,7 +17,7 @@ const eslintConfig = defineConfig([
     },
     plugins: {
       '@typescript-eslint': tseslint,
-      import: importPlugin,
+      'simple-import-sort': simpleImportSort,
       'unused-imports': unusedImports,
     },
     rules: {
@@ -26,21 +26,8 @@ const eslintConfig = defineConfig([
       'no-var': 'error',
       'no-console': ['warn', { allow: ['warn', 'error'] }],
 
-      'import/order': [
-        'error',
-        {
-          groups: [
-            'builtin',
-            'external',
-            'internal',
-            ['parent', 'sibling', 'index'],
-            'object',
-            'type',
-          ],
-          'newlines-between': 'always',
-          alphabetize: { order: 'asc', caseInsensitive: true },
-        },
-      ],
+      'simple-import-sort/imports': 'error',
+      'simple-import-sort/exports': 'error',
 
       'unused-imports/no-unused-imports': 'error',
       'unused-imports/no-unused-vars': [

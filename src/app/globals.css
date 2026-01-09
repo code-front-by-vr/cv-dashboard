@@ -112,6 +112,13 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+
+  /*Button variables*/
+  --btn-primary-hover: rgb(138, 33, 34);
+  --btn-muted: rgb(118, 118, 118);
+  --btn-muted-hover: rgba(118, 118, 118, 0.08);
+  --btn-disabled-bg: rgba(255, 255, 255, 0.12);
+  --btn-disabled-text: rgba(255, 255, 255, 0.3);
 }
 
 @layer base {

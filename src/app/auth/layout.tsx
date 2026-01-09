@@ -1,9 +1,9 @@
-import AuthTabs from '@/components/authTabs'
+import AuthTabs from '@/components/auth/AuthTabs'
 
 export default function AuthLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="flex min-h-screen items-start justify-center">
+    <main className="grid min-h-dvh grid-rows-[auto_1fr]">
       <AuthTabs>{children}</AuthTabs>
-    </div>
+    </main>
   )
 }
