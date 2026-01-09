@@ -42,7 +42,7 @@ export const FloatLabelPasswordInput = ({
   }
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    if (value === null) {
+    if (value === undefined) {
       setInternalValue(e.target.value)
     }
     onChange?.(e)
