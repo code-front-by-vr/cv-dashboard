@@ -1,5 +1,13 @@
 import { redirect } from 'next/navigation'
 
-export default function AuthIndex() {
-  redirect('/auth/login')
+import { verifySession } from '@/lib/auth/session'
+
+export default async function AuthIndex() {
+  const session = await verifySession()
+
+  if (session.isAuth) {
+    redirect('/users')
+  } else {
+    redirect('/auth/login')
+  }
 }

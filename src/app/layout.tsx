@@ -3,6 +3,8 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Roboto } from 'next/font/google'
 
+import { Toaster } from '@/components/ui/sonner'
+
 const roboto = Roboto({
   weight: ['400', '500', '700'],
   subsets: ['latin'],
@@ -22,6 +24,7 @@ export default function RootLayout({
     <html lang="en" className="dark">
       <body className={`${roboto.className} antialiased`}>
         <main>{children}</main>
+        <Toaster richColors closeButton position="top-right" />
       </body>
     </html>
   )

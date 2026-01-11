@@ -12,6 +12,7 @@ export const FloatLabelPasswordInput = ({
   error,
   className,
   id,
+  name,
   value,
   defaultValue,
   onFocus,
@@ -54,6 +55,7 @@ export const FloatLabelPasswordInput = ({
         <Input
           id={inputId}
           ref={ref}
+          name={name}
           type={showPassword ? 'text' : 'password'}
           value={value}
           defaultValue={defaultValue}
