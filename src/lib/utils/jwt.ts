@@ -47,6 +47,7 @@ export function isTokenValid(token: string | undefined, bufferSeconds = 30): boo
   }
 
   const payload = decodeJWT(token)
+
   if (!payload) {
     return false
   }
