@@ -8,6 +8,7 @@ import { clearAuthCookie, setAuthCookie } from '@/lib/auth/cookies.server'
 import { signUpMutation } from '@/lib/graphql/mutations/auth'
 import { loginQuery } from '@/lib/graphql/queries/auth'
 import type { LoginFormState,SignUpFormState } from '@/lib/types/auth'
+import { getErrorMessage } from '@/lib/utils/parse-error'
 
 export async function signup(
   _state: SignUpFormState,
@@ -40,7 +41,7 @@ export async function signup(
     return {
       status: 'error',
       errors: {
-        _form: ['User already exists.', error as string],
+        _form: [ getErrorMessage(error)],
       },
     }
   }
@@ -74,7 +75,7 @@ export async function login(_state: LoginFormState, formData: FormData): Promise
     return {
       status: 'error',
       errors: {
-        _form: ['Invalid email or password.', error as string],
+        _form: [getErrorMessage(error)],
       },
     }
   }

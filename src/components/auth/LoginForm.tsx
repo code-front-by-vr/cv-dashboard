@@ -26,7 +26,7 @@ export default function LoginForm() {
   }, [router, state?.status])
 
   return (
-    <form action={action} className="flex w-xl flex-col gap-6">
+    <form action={action} className="flex w-xl flex-col gap-6" noValidate>
       <h4 className="text-center text-4xl font-normal">Welcome back</h4>
       <p className="mb-4 text-center">Hello again! Log in to continue</p>
 

@@ -90,7 +90,7 @@ export const FloatLabelInput = ({
           {label}
         </label>
       </div>
-      {error && <p className="form-error text-secondary mt-1 text-xs">{error}</p>}
+      {error && <p className="form-error text-primary mt-1 text-xs">{error}</p>}
     </div>
   )
 }
