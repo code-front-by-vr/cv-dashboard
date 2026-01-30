@@ -11,6 +11,5 @@
   "trailingComma": "all",
   "quoteProps": "as-needed",
   "proseWrap": "preserve",
-  "endOfLine": "lf",
-  "plugins": ["prettier-plugin-tailwindcss"]
+  "endOfLine": "lf"
 }
