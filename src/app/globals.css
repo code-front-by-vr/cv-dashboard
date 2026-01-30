@@ -128,6 +128,29 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  input {
+    transition-property: color, border-color, box-shadow, opacity !important;
+    background-color: var(--background) !important;
+  }
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 1000px var(--background) inset !important;
+    -webkit-text-fill-color: var(--foreground) !important;
+    background-color: var(--background) !important;
+    transition: background-color 0s 600000s, color 0s 600000s !important;
+  }
+
+  .dark input:-webkit-autofill,
+  .dark input:-webkit-autofill:hover,
+  .dark input:-webkit-autofill:focus,
+  .dark input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 1000px var(--background) inset !important;
+    -webkit-text-fill-color: var(--foreground) !important;
+  }
 }
 
 @layer components {

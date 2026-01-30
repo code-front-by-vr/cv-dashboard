@@ -67,8 +67,6 @@ export const FloatLabelInput = ({
             'hover:border-muted-foreground disabled:hover:border-input',
             'focus:outline-none focus-visible:ring-0',
             'selection:bg-primary/20 selection:text-foreground',
-            'autofill:shadow-[inset_0_0_0_1000px_rgb(var(--background))]',
-            'autofill:[-webkit-text-fill-color:rgb(var(--foreground))]',
             !isFocused && !error && 'border-input',
             isFocused && 'border-primary!',
             isFocused && 'placeholder:opacity-100',

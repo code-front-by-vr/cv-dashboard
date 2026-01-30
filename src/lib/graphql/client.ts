@@ -1,6 +1,6 @@
 import 'server-only'
 
-import { ClientError,GraphQLClient } from 'graphql-request'
+import { ClientError, GraphQLClient } from 'graphql-request'
 
 import { getAccessToken } from '../auth/cookies.server'
 import { refreshToken } from '../auth/refresh'
@@ -15,6 +15,7 @@ function createClient(token?: string) {
     headers,
   })
 }
+
 export async function graphQlRequest<T>(
   query: string,
   variables?: Record<string, unknown>,

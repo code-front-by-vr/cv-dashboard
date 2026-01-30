@@ -15,7 +15,7 @@ export function proxy(request: NextRequest) {
   if (isProtectedRoute && !hasSession) {
     return NextResponse.redirect(new URL('/auth/login', request.url))
   }
-
+  // TODO: think about it
   if (isPublicRoute && hasSession) {
     return NextResponse.redirect(new URL('/users', request.url))
   }

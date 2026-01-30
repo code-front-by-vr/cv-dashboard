@@ -10,9 +10,13 @@ import { useFormToast } from '@/lib/hooks/use-form-toast'
 import { Button } from '../ui/button'
 import { FloatLabelInput, FloatLabelPasswordInput } from '../ui/float-label-input'
 
+const initialState = {
+  message: '',
+}
+
 export default function LoginForm() {
   const router = useRouter()
-  const [state, action, pending] = useActionState(login, undefined)
+  const [state, action, pending] = useActionState(login, initialState)
 
   useFormToast(state)
   useEffect(() => {
