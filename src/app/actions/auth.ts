@@ -7,7 +7,7 @@ import { z } from 'zod'
 import { clearAuthCookie, setAuthCookie } from '@/lib/auth/cookies.server'
 import { signUpMutation } from '@/lib/graphql/mutations/auth'
 import { loginQuery } from '@/lib/graphql/queries/auth'
-import type { LoginFormState,SignUpFormState } from '@/lib/types/auth'
+import type { LoginFormState, SignUpFormState } from '@/lib/types/auth'
 import { getErrorMessage } from '@/lib/utils/parse-error'
 
 export async function signup(
@@ -41,7 +41,7 @@ export async function signup(
     return {
       status: 'error',
       errors: {
-        _form: [ getErrorMessage(error)],
+        _form: [getErrorMessage(error)],
       },
     }
   }
