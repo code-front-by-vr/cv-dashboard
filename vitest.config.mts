@@ -8,10 +8,25 @@ export default defineConfig({
   test: {
     environment: 'jsdom',
     clearMocks: true,
-    globals: true,
+    setupFiles: ['./src/__tests__/setup.ts'],
+    env: {
+      API_BASE_URL: 'http://localhost:3001/api/graphql',
+    },
     alias: {
       'server-only': path.resolve(__dirname, './src/__tests__/mocks/empty.ts'),
       '@': path.resolve(__dirname, './src'),
+    },
+    coverage: {
+      provider: 'v8',
+      reporter: ['text', 'json', 'html'],
+      exclude: [
+        'node_modules/',
+        'src/__tests__/',
+        '**/*.d.ts',
+        '**/*.config.*',
+        '**/mockData',
+        '.next/**',
+      ],
     },
   },
 })

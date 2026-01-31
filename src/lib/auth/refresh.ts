@@ -4,7 +4,7 @@ import { ClientError } from 'graphql-request'
 
 import { updateTokenMutation } from '@/lib/graphql/mutations/auth'
 
-import { clearAuthCookie,getRefreshToken, setAuthCookie } from './cookies.server'
+import { clearAuthCookie, getRefreshToken, setAuthCookie } from './cookies.server'
 
 export async function refreshToken(): Promise<string | null> {
   const refreshTokenValue = await getRefreshToken()

@@ -1,4 +1,5 @@
 import type { AuthInput } from 'cv-graphql'
+import { GraphQLClient } from 'graphql-request'
 
 import type { SignupResponse, UpdateTokenResponse } from '@/lib/types/graphql'
 
@@ -22,15 +23,33 @@ export async function signUpMutation(auth: AuthInput) {
   )
 }
 
+//TODO: Remove after testing
+
+// export async function updateTokenMutation() {
+//   return graphQlRequest<UpdateTokenResponse>(
+//     `
+//     mutation UpdateToken {
+//       updateToken {
+//         access_token
+//         refresh_token
+//       }
+//     }
+//   `,
+//   )
+// }
+
+const endpoint = process.env.API_BASE_URL!
+
+const authClient = new GraphQLClient(endpoint)
+
 export async function updateTokenMutation() {
-  return graphQlRequest<UpdateTokenResponse>(
-    `
+  const query = `
     mutation UpdateToken {
       updateToken {
         access_token
         refresh_token
       }
     }
-  `,
-  )
+  `
+  return authClient.request<UpdateTokenResponse>(query)
 }
