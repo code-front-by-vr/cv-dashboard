@@ -101,6 +101,14 @@ describe('JWT utils', () => {
       expect(isTokenValid('invalid.token')).toBe(false)
     })
 
+    it('should return false if the token is undefined', () => {
+      expect(isTokenValid(undefined)).toBe(false)
+    })
+
+    it('should return false when token is empty string', () => {
+      expect(isTokenValid('')).toBe(false)
+    })
+
     it('should return false for expired token', () => {
       const token = createMockToken({ exp: NOW_SECONDS - 100 })
       expect(isTokenValid(token)).toBe(false)
