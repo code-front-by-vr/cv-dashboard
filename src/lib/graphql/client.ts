@@ -5,7 +5,7 @@ import { ClientError, GraphQLClient } from 'graphql-request'
 import { getAccessToken } from '../auth/cookies.server'
 import { refreshToken } from '../auth/refresh'
 
-const endpoint = process.env.API_BASE_URL!
+const endpoint = process.env.API_BASE_URL as string
 
 function createClient(token?: string) {
   const headers = token ? { Authorization: `Bearer ${token}` } : undefined

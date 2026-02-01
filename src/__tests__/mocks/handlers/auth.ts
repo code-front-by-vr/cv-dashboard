@@ -3,7 +3,7 @@ import { graphql, HttpResponse } from 'msw'
 import type { AuthInput } from '@/lib/types/auth'
 import type { LoginResponse, SignupResponse, UpdateTokenResponse } from '@/lib/types/graphql'
 
-const api = graphql.link(process.env.API_BASE_URL!);
+const api = graphql.link(process.env.API_BASE_URL!)
 
 export const authHandlers = [
   api.mutation<SignupResponse, { auth: AuthInput }>('Signup', ({ variables }) => {
@@ -15,8 +15,8 @@ export const authHandlers = [
           user: { id: '1', email },
           access_token: 'mock_access_token',
           refresh_token: 'mock_refresh_token',
-        }
-      }
+        },
+      },
     })
   }),
 
@@ -29,8 +29,8 @@ export const authHandlers = [
           user: { id: '1', email },
           access_token: 'mock_access_token',
           refresh_token: 'mock_refresh_token',
-        }
-      }
+        },
+      },
     })
   }),
 
@@ -40,8 +40,8 @@ export const authHandlers = [
         updateToken: {
           access_token: 'refreshed_access_token',
           refresh_token: 'refreshed_refresh_token',
-        }
-      }
+        },
+      },
     })
-  })
+  }),
 ]

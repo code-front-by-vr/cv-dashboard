@@ -141,7 +141,9 @@
     -webkit-box-shadow: 0 0 0 1000px var(--background) inset !important;
     -webkit-text-fill-color: var(--foreground) !important;
     background-color: var(--background) !important;
-    transition: background-color 0s 600000s, color 0s 600000s !important;
+    transition:
+      background-color 0s 600000s,
+      color 0s 600000s !important;
   }
 
   .dark input:-webkit-autofill,

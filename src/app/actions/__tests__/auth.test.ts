@@ -4,17 +4,15 @@ import { describe, expect, it, vi } from 'vitest'
 import { server } from '@/__tests__/mocks/server'
 
 vi.mock('@/lib/auth/cookies.server')
-vi.mock('next/navigation', () => {
-  return {
-    redirect: vi.fn()
-  }
-})
+vi.mock('next/navigation')
 
 import { redirect } from 'next/navigation'
 
 import { clearAuthCookie, setAuthCookie } from '@/lib/auth/cookies.server'
 
 import { login, logout, signup } from '../auth'
+
+const api = graphql.link(process.env.API_BASE_URL as string)
 
 describe('Auth actions', () => {
   describe('signup', () => {
@@ -29,17 +27,18 @@ describe('Auth actions', () => {
       expect(result?.message).toBe('Registration successful')
       expect(setAuthCookie).toHaveBeenCalledWith({
         accessToken: 'mock_access_token',
-        refreshToken: 'mock_refresh_token'
+        refreshToken: 'mock_refresh_token',
       })
-
     })
 
     it('should handle signup mutation errors', async () => {
-      server.use(graphql.link(process.env.API_BASE_URL!).mutation('Signup', () => {
-        return HttpResponse.json({
-          errors: [{ message: 'User already exists' }]
-        })
-      }))
+      server.use(
+        api.mutation('Signup', () => {
+          return HttpResponse.json({
+            errors: [{ message: 'User already exists' }],
+          })
+        }),
+      )
       const mockFormData = new FormData()
       mockFormData.set('email', 'test@example.com')
       mockFormData.set('password', 'password123')
@@ -76,17 +75,17 @@ describe('Auth actions', () => {
 
       expect(setAuthCookie).toHaveBeenCalledWith({
         accessToken: 'mock_access_token',
-        refreshToken: 'mock_refresh_token'
+        refreshToken: 'mock_refresh_token',
       })
     })
 
     it('should handle login query errors', async () => {
       server.use(
-        graphql.link(process.env.API_BASE_URL!).query('Login', () => {
+        api.query('Login', () => {
           return HttpResponse.json({
-            errors: [{ message: 'Invalid Credentials' }]
+            errors: [{ message: 'Invalid Credentials' }],
           })
-        })
+        }),
       )
       const mockFormData = new FormData()
       mockFormData.set('email', 'test@example.com')

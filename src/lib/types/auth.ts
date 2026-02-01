@@ -2,12 +2,12 @@ import type { AuthInput } from 'cv-graphql'
 
 export type FormState<TFields extends Record<string, string[]>> =
   | {
-    status?: 'success' | 'error'
-    message?: string
-    errors?: Partial<TFields> & {
-      _form?: string[]
+      status?: 'success' | 'error'
+      message?: string
+      errors?: Partial<TFields> & {
+        _form?: string[]
+      }
     }
-  }
   | undefined
 
 export type SignUpFormState = FormState<{

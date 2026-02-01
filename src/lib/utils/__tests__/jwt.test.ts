@@ -1,6 +1,6 @@
-import { afterEach,beforeEach, describe, expect, it, vi } from 'vitest'
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
-import type { JWTPayload } from '../jwt';
+import type { JWTPayload } from '../jwt'
 import { decodeJWT, isTokenExpired, isTokenValid } from '../jwt'
 
 describe('JWT utils', () => {
@@ -18,14 +18,16 @@ describe('JWT utils', () => {
 
   const createMockToken = (payload: Partial<JWTPayload>): string => {
     const header = btoa(JSON.stringify({ alg: 'HS256', typ: 'JWT' }))
-    const body = btoa(JSON.stringify({
-      sub: 'user123',
-      email: 'test@example.com',
-      role: 'Employee',
-      exp: NOW_SECONDS + 3600,
-      iat: NOW_SECONDS,
-      ...payload
-    }))
+    const body = btoa(
+      JSON.stringify({
+        sub: 'user123',
+        email: 'test@example.com',
+        role: 'Employee',
+        exp: NOW_SECONDS + 3600,
+        iat: NOW_SECONDS,
+        ...payload,
+      }),
+    )
     return `${header}.${body}.signature`
   }
 
@@ -52,7 +54,7 @@ describe('JWT utils', () => {
         email: 'test@example.com',
         role: 'Employee',
         exp: NOW_SECONDS + 3600,
-        iat: NOW_SECONDS
+        iat: NOW_SECONDS,
       }
       expect(isTokenExpired(payload)).toBe(false)
     })
@@ -63,7 +65,7 @@ describe('JWT utils', () => {
         email: 'test@example.com',
         role: 'Employee',
         exp: NOW_SECONDS - 10,
-        iat: NOW_SECONDS - 3600
+        iat: NOW_SECONDS - 3600,
       }
       expect(isTokenExpired(payload)).toBe(true)
     })
@@ -73,19 +75,18 @@ describe('JWT utils', () => {
         sub: 'user123',
         email: 'test@example.com',
         role: 'Employee' as const,
-        iat: NOW_SECONDS
+        iat: NOW_SECONDS,
       }
       expect(isTokenExpired(payload as JWTPayload)).toBe(false)
     })
 
     it('should true, if the token is expired by less than 20 seconds (buffer - 30 seconds)', () => {
-
       const payload: JWTPayload = {
         sub: 'user123',
         email: 'test@example.com',
         role: 'Employee',
         exp: NOW_SECONDS + 20,
-        iat: NOW_SECONDS
+        iat: NOW_SECONDS,
       }
       expect(isTokenExpired(payload)).toBe(true)
     })

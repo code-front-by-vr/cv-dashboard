@@ -1,8 +1,8 @@
 'use client'
 
-import { usePathname,useRouter } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 
-import { Tabs, TabsContent,TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { cn } from '@/lib/utils'
 
 export default function AuthTabs({ children }: { children: React.ReactNode }) {

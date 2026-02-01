@@ -10,7 +10,15 @@ import unusedImports from 'eslint-plugin-unused-imports'
 const eslintConfig = defineConfig([
   ...nextVitals,
   ...nextTs,
-  prettier,
+  globalIgnores([
+    // Default ignores of eslint-config-next:
+    '.next/**',
+    'out/**',
+    'build/**',
+    'dist/**',
+    'coverage/**',
+    'next-env.d.ts',
+  ]),
   {
     languageOptions: {
       parser: tsParser,
@@ -47,15 +55,7 @@ const eslintConfig = defineConfig([
       'react/self-closing-comp': 'error',
     },
   },
-  globalIgnores([
-    // Default ignores of eslint-config-next:
-    '.next/**',
-    'out/**',
-    'build/**',
-    'dist/**',
-    'coverage/**',
-    'next-env.d.ts',
-  ]),
+  prettier,
 ])
 
 export default eslintConfig
